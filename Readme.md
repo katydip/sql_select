@@ -78,3 +78,52 @@
 | Frank      | Fountain  | 2016-01-31 |
 +------------+-----------+------------+
 6 rows in set (0.00 sec)
+
+
+--------------------------------------
+Medium Challenge
+
+mysql> explain assignment;
++----------------+------------------+------+-----+---------+----------------+
+| Field          | Type             | Null | Key | Default | Extra          |
++----------------+------------------+------+-----+---------+----------------+
+| assignment_id  | int(11) unsigned | NO   | PRI | NULL    | auto_increment |
+| student_id     | int(11)          | NO   |     | NULL    |                |
+| assignment_nbr | int(11)          | NO   |     | NULL    |                |
+| class_id       | int(11)          | YES  |     | NULL    |                |
+| grade_id       | int(11) unsigned | NO   | MUL | NULL    |                |
++----------------+------------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from assignment;
++---------------+------------+----------------+----------+----------+
+| assignment_id | student_id | assignment_nbr | class_id | grade_id |
++---------------+------------+----------------+----------+----------+
+|             1 |          2 |              0 |     NULL |        1 |
+|             2 |          4 |              0 |     NULL |        2 |
+|             3 |          3 |              0 |     NULL |        3 |
+|             4 |          7 |              0 |     NULL |        4 |
+|             5 |          9 |              0 |     NULL |        5 |
++---------------+------------+----------------+----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> explain grade;
++----------+------------------+------+-----+---------+----------------+
+| Field    | Type             | Null | Key | Default | Extra          |
++----------+------------------+------+-----+---------+----------------+
+| grade_id | int(11) unsigned | NO   | PRI | NULL    | auto_increment |
+| grade    | varchar(30)      | YES  |     | NULL    |                |
++----------+------------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from grade;
++----------+------------------------------+
+| grade_id | grade                        |
++----------+------------------------------+
+|        1 | Incomplete                   |
+|        2 | Complete and unsatisfactory  |
+|        3 | Complete and satisfactory    |
+|        4 | Exceeds expectations         |
+|        5 | Not graded                   |
++----------+------------------------------+
+5 rows in set (0.00 sec)
