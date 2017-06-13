@@ -65,6 +65,7 @@
 3 rows in set (0.00 sec)
 
 <!-- 5-Create a list of students showing firstname, lastname and startdate where the startdate is between Jan 1, 2016 and June 30, 2016 and order the list by descending start_date sequence. -->
+<!-- the dates are strings, require quotes -->
 
 5-  mysql> select first_name, last_name, start_date from student where start_date BETWEEN '2016-01-01' and '2016-06-30' ORDER BY start_date desc;
 +------------+-----------+------------+
@@ -81,7 +82,46 @@
 
 
 --------------------------------------
+<!-- Medium Challenge NOTES
+Create the grade table and create a foreign key to it in assignment...
+
+to change the column name we dropped and added the column- the properties in grade_id
+must be exact in both tables in order to connect them with foreign keys.
+
+mysql> alter table assignment drop column grade_id;
+mysql> ALTER TABLE assignment add column grade_id int;
+
+to create the table grade, we had to have grade_id as an int that we will use as the
+foreign key in assignments, and we must have grade to hold characters.
+
+mysql> CREATE TABLE grade (
+    ->   `grade_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    ->   `grade` varchar(30) DEFAULT NULL,
+    -> PRIMARY KEY (`grade_id`)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+How to add a foreign key on command line:
+
+mysql> alter table assignment ADD FOREIGN KEY (grade_id) REFERENCES grade(grade_id);
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0 -->
+
+
+------------------
 Medium Challenge
+Create the grade table and create a foreign key to it in assignment...
+
+mysql> describe grade;
++----------+------------------+------+-----+---------+----------------+
+| Field    | Type             | Null | Key | Default | Extra          |
++----------+------------------+------+-----+---------+----------------+
+| grade_id | int(11) unsigned | NO   | PRI | NULL    | auto_increment |
+| grade    | varchar(30)      | YES  |     | NULL    |                |
++----------+------------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+
 
 mysql> explain assignment;
 +----------------+------------------+------+-----+---------+----------------+
@@ -130,6 +170,10 @@ mysql> select * from grade;
 
 ------------------------------------------
 Hard Challenge
+Add the constraint to the assignment table that prohibits creating an assignment without an associated student row;  
+<!-- notes: aka- make another foreign key in the assignment table so it associates
+with student. had to assign student numbers to the rows already created so it would fit with
+new rule.  -->
 
 mysql> alter table assignment ADD FOREIGN KEY (student_id) REFERENCES student(student_id);
 Query OK, 5 rows affected (0.02 sec)
