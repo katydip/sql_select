@@ -127,3 +127,10 @@ mysql> select * from grade;
 |        5 | Not graded                   |
 +----------+------------------------------+
 5 rows in set (0.00 sec)
+
+------------------------------------------
+Hard Challenge
+
+mysql> alter table assignment ADD FOREIGN KEY (student_id) REFERENCES student(student_id);
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
