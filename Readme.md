@@ -1,3 +1,4 @@
+```sql
 <!-- 1-Create a list of students showing first and last names only. -->
 
 1-  mysql> select first_name, last_name from student;
@@ -178,3 +179,4 @@ new rule.  -->
 mysql> alter table assignment ADD FOREIGN KEY (student_id) REFERENCES student(student_id);
 Query OK, 5 rows affected (0.02 sec)
 Records: 5  Duplicates: 0  Warnings: 0
+```
